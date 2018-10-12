@@ -13,6 +13,4 @@ GSEM/GSEventManager/db\.sqlite3
 
 \.idea/
 
-GSEM/GSEventManager/static
-
 GSEM/GSEventManager/.DS_Store
