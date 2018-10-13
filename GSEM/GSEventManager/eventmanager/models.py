@@ -3,6 +3,7 @@ from django.utils import timezone
 
 # Create your models here.
 
+
 class Event(models.Model):
     author = models.ForeignKey('auth.User', on_delete=models.CASCADE)
     event_name = models.CharField(max_length=200)
