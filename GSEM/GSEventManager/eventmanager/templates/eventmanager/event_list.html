@@ -8,8 +8,9 @@
 </head>
 
 <body>
-<h1>Why dont the fucking html tags work god damnit</h1>
+<h1>Where is my python code going to?</h1>
 
+<div>
 {% for event in events %}
     <div>
         <p>published: {{ event.created_date }}</p>
@@ -17,6 +18,7 @@
         <p>{{ event.text|linebreaksbr }}</p>
     </div>
 {% endfor %}
+</div>
 
 </body>
 </html>
