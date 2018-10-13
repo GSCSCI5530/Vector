@@ -7,4 +7,4 @@ from .models import Event
 
 def event_list(request):
     events = Event.objects.order_by('published_date')
-    return render(request, 'eventmanager/event_list.html', {'events': events})
+    return render(request, './eventmanager/event_list.html', {'events': events})
