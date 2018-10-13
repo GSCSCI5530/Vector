@@ -1,10 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
+
 <head>
-    <meta charset="UTF-8">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
     <title>Georgia Southern Events</title>
 </head>
+
 <body>
-<h1>Events!</h1>
+<h1>Why dont the fucking html tags work god damnit</h1>
+
+{% for event in events %}
+    <div>
+        <p>published: {{ event.created_date }}</p>
+        <h1><a href="">{{ event.event_name }}</a></h1>
+        <p>{{ event.text|linebreaksbr }}</p>
+    </div>
+{% endfor %}
+
 </body>
-</html>
