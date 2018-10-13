@@ -10,15 +10,14 @@
 <body>
 <h1>Where is my python code going to?</h1>
 
-<div>
+
 {% for event in events %}
-    <div>
+
         <p>published: {{ event.created_date }}</p>
         <h1><a href="">{{ event.event_name }}</a></h1>
         <p>{{ event.text|linebreaksbr }}</p>
-    </div>
+
 {% endfor %}
-</div>
 
 </body>
 </html>
