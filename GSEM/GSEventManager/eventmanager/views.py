@@ -6,5 +6,5 @@ from .models import Event
 
 
 def event_list(request):
-    events = Event.objects.order_by('published_date')
+    events = Event.objects.order_by('created_date')
     return render(request, 'eventmanager/event_list.html', {'events': events})

@@ -1,16 +1,2 @@
-*.__pycache__
-*~
-*.pyc
-GSEM/myvenv/
-
-GSEM/\.idea/
-
-GSEM/GSEventManager/GSEventManager/__pycache__/
-
-GSEM/GSEventManager/eventmanager/__pycache__/
 
 GSEM/GSEventManager/db\.sqlite3
-
-\.idea/
-
-GSEM/GSEventManager/.DS_Store

@@ -1,9 +1,8 @@
-<!DOCTYPE html>
+{% load static %}
 <html>
 
 <head>
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="{% static 'css/eventmanager.css' %}">
     <title>Georgia Southern Events</title>
 </head>
 
@@ -11,13 +10,22 @@
 <h1>Where is my python code going to?</h1>
 
 
-{% for event in events %}
+<div class="content container">
+    <div class="row">
+        <div class="col-md-8">
+            {% for event in events %}
+                <div class="event">
+                    <div class="date">
+                        <p>published: {{ event.created_date }}</p>
+                    </div>
+                    <h1><a href="">{{ event.event_name }}</a></h1>
+                    <p>{{ event.text|linebreaksbr }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
 
-        <p>published: {{ event.created_date }}</p>
-        <h1><a href="">{{ event.event_name }}</a></h1>
-        <p>{{ event.text|linebreaksbr }}</p>
-
-{% endfor %}
 
 </body>
 </html>
