@@ -1,0 +1,14 @@
+*.__pycache__
+*~
+*.pyc
+/myvenv/
+
+/GSEventManager/GSEventManager/__pycache__/
+
+/GSEventManager/eventmanager/__pycache__/
+
+/GSEventManager/db/.sqlite3
+
+.idea/
+
+/GSEventManager/.DS_Store
