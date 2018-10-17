@@ -7,7 +7,8 @@
             {{ event.published_date }}
         </div>
         {% endif %}
-        <h1>{{ event.name }}</h1>
+        <a class="btn btn-default" href="{% url 'event_edit' pk=event.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+        <h1>{{ event.event_name }}</h1>
         <p>{{ event.text|linebreaksbr }}</p>
     </div>
 {% endblock %}
