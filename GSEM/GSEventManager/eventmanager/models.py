@@ -15,7 +15,6 @@ class Event(models.Model):
     event_date = models.DateTimeField(default=timezone.now)
     event_place = models.CharField(max_length=200)
 
-
     def post(self):
         self.published_date = timezone.now()
         self.save()
