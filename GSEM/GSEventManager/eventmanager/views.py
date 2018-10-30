@@ -3,6 +3,7 @@ from django.utils import timezone
 from .models import Event
 from .forms import EventForm
 from django.shortcuts import redirect
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
