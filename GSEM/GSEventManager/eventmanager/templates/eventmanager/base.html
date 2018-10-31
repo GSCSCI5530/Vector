@@ -21,6 +21,16 @@
                     <button type="submit"> Logout </button>
                 </form>
 
+                <form class="login-link" action="{% url 'accounts:login' %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit"> Login </button>
+                </form>
+
+                <form class="signup-link" action="{% url 'accounts:signup' %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit"> Sign-up </button>
+                </form>
+
             <h1><a href="/">Georgia Southern Events</a></h1>
         </div>
 
