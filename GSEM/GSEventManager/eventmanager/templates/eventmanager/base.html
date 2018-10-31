@@ -15,9 +15,13 @@
 
 
             <a href="{% url 'event_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+            <a href="/login/" class="top-menu"> Login <span class="glyphicon glyphicon-log-in"></span></a>
+            <a href="/signup/" class="top-menu"> Sign Up <span class="glyphicon glyphicon-pencil"></span></a>
+            <a href="/logout/" class="top-menu"> Logout <span class="glyphicon glyphicon-log-out"></span></a>
 
-                <form class="logout-link" action="{% url 'accounts:logout' %}" method="post">
+                <!--<form class="logout-link" action="{% url 'accounts:logout' %}" method="post">
                     {% csrf_token %}
+                    <a href="//" class="top-menu" type="submit"> Lopoop <span class="glyphicon glyphicon-pencil"></span></a>
                     <button type="submit"> Logout </button>
                 </form>
 
@@ -29,7 +33,8 @@
                 <form class="signup-link" action="{% url 'accounts:signup' %}" method="post">
                     {% csrf_token %}
                     <button type="submit"> Sign-up </button>
-                </form>
+
+                </form>-->
 
             <h1><a href="/">Georgia Southern Events</a></h1>
         </div>
