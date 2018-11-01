@@ -20,7 +20,7 @@ h1, h2, h3, h4 {
 }
 
 .date {
-    color: #828282;
+    color: #000000;
 }
 
 .save {
@@ -39,9 +39,11 @@ h1, h2, h3, h4 {
 }
 
 .event {
-    margin-bottom: 70px;
+    margin-bottom: 30px;
+    background: #5897fb;
 }
 
 .event h1 a, .event h1 a:visited {
     color: #000000;
+
 }

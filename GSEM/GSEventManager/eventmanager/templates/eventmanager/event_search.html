@@ -1,13 +1,13 @@
 {% extends 'eventmanager/base.html' %}
 
 {% block content %}
+    <h1> Search Results for "{{ query }}"</h1>
             {% for event in events %}
                 <div class="event">
                     <div class="date">
-                        <p>published: {{ event.created_date }}</p>
+                        published: {{ event.created_date }}
                     </div>
                     <h1><a href="{% url 'event_detail' pk=event.pk %}">{{ event.event_name }}</a></h1>
-                    <!--<p>{{ event.text|linebreaksbr }}</p>-->
                 </div>
             {% endfor %}
 {% endblock %}
