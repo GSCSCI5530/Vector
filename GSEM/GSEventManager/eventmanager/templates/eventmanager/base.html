@@ -36,6 +36,12 @@
                 </form>-->
 
             <h1><a href="/">Georgia Southern Events</a></h1>
+
+            <form class="select2-search__field" action="{% url 'event_search' %}" method="get">
+                <input class="form-row" type="search" name="q" placeholder="Search" aria-label="Search">
+                <button type="submit" value="Search"> Search </button>
+            </form>
+
         </div>
 
 
