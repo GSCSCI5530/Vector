@@ -1,9 +1,10 @@
+from django.db.models import Q
 from django.shortcuts import render, get_object_or_404
 from django.utils import timezone
 from .models import Event
 from .forms import EventForm
 from django.shortcuts import redirect
-from django.contrib.auth.decorators import login_required
+
 
 # Create your views here.
 
@@ -45,3 +46,14 @@ def event_edit(request, pk):
     else:
         form = EventForm(instance=event)
     return render(request, 'eventmanager/event_edit.html', {'form': form})
+
+
+def event_search(request):
+    if 'q' in request.GET and request.GET['q']:
+        q = request.GET['q']
+        events = Event.objects.filter(event_name__icontains=q).order_by('-created_date')
+        events.union(Event.objects.filter(text__icontains=q))
+        # events = Event.objects.get(Q(event_name__icontains=q) | Q(text__icontains=q)).order_by('-created_date')
+        return render(request, 'eventmanager/event_search.html', {'events': events, 'query': q})
+    else:
+        return redirect('event_list')
