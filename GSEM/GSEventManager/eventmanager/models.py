@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -21,3 +22,12 @@ class Event(models.Model):
 
     def __str__(self):
         return self.event_name
+
+
+class Attendee(models.Model):
+    event_name = models.ForeignKey('Event', on_delete=models.CASCADE)
+    user_name = models.ForeignKey('auth.User', on_delete=models.CASCADE)
+    user_email = models.CharField(max_length=200)
+
+    def attend(self):
+        self.save()
