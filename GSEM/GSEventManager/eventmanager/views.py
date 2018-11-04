@@ -1,7 +1,7 @@
 from django.db.models import Q
 from django.shortcuts import render, get_object_or_404
 from django.utils import timezone
-from .models import Event
+from .models import Event, Attendee
 from .forms import EventForm
 from django.shortcuts import redirect
 
@@ -57,3 +57,14 @@ def event_search(request):
         return render(request, 'eventmanager/event_search.html', {'events': events, 'query': q})
     else:
         return redirect('event_list')
+
+
+def attend_event(request, pk):
+    if request.method == "GET":
+        attendee = Attendee()
+        event = get_object_or_404(Event, pk=pk)
+        user = request.user
+        user_name = user.username
+        user_email = user.email
+        attendee.attend()
+        redirect('event_detail', pk=event.pk)
