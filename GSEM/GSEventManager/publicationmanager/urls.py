@@ -1,4 +1,4 @@
-"""GSEventManager URL Configuration
+"""PublishingSystem URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/2.1/topics/http/urls/
@@ -15,10 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from . import views
 
+app_name = 'publicationmanager'
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include('eventmanager.urls')),
-    path('', include('accounts.urls')),
-	path('', include('publicationmanager.urls'))
+	path('request_email', views.request_email, name='request_email'),
+	path('confirm_email', views.confirm_email, name='confirm_email'),
 ]
