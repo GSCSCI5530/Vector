@@ -1,0 +1,8 @@
+<!DOCTYPE html>
+<html>
+	<form method="POST" action= {% url 'publicationmanager:confirm_email' %}> 
+	{% csrf_token %}
+	Friend Email: <input type='text' name='textbox1'/><br><br>
+	<input type="submit" name="Submit"/ value="Send">
+	</form>
+</html>

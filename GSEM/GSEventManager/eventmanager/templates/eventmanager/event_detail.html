@@ -10,12 +10,14 @@
         <a class="btn btn-primary" href="{% url 'event_edit' pk=event.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
         <a class="btn btn-primary" href="{% url 'attend_event' pk=event.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
         <h1>{{ event.event_name }}</h1>
-
+		
+		
     </div>
 
 
 <p><h4>{{ event.text|linebreaksbr }}</h4></p>
 
+<<<<<<< HEAD
 <div id="disqus_thread"></div>
 <script>
 
@@ -39,3 +41,40 @@ s.setAttribute('data-timestamp', +new Date());
 
 
 {% endblock %}
+=======
+	<a href="https://www.facebook.com/sharer/sharer.php?u={{request.build_absolute_uri}}">
+	Share on Facebook
+	</a> </br>
+	<p>&nbsp;</p>
+	<a href="https://twitter.com/home?status=You're%20Invited!%20{{request.build_absolute_uri}}">
+	Share on Twitter
+	</a> </br>
+	<p>&nbsp;</p>
+	<a href='https://plus.google.com/share?url={{request.build_absolute_uri}}'>
+	Share on Google+
+	</a> </br>
+	<p>&nbsp;</p>
+	
+	<form method="POST" action= {% url 'publicationmanager:request_email' %}> 
+	{% csrf_token %}
+	<input type="submit" name="Submit"/ value="Share via. Email">
+	</form>
+	
+	<br>
+	<hr>
+	<a class="btn btn-default" href="{% url 'add_comment' pk=event.pk %}">Add comment</a>
+    <hr>
+	{% for comment in event.comments.all %}
+		<div class="comment">
+			<div class="date">{{ comment.timestamp }}</div>
+			<strong>{{ comment.user }}</strong>
+			<p>{{ comment.content|linebreaks }}</p>
+		</div>
+	{% empty %}
+		<p>No comments here yet :(</p>
+	{% endfor %}
+{% endblock %}
+
+
+
+>>>>>>> master
