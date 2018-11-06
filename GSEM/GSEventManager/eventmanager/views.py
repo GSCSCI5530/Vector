@@ -64,7 +64,10 @@ def attend_event(request, pk):
         attendee = Attendee()
         event = get_object_or_404(Event, pk=pk)
         user = request.user
-        user_name = user.username
-        user_email = user.email
-        attendee.attend()
-        redirect('event_detail', pk=event.pk)
+        attendee.event_name = event.event_name
+        attendee.user_name = user.username
+        attendee.user_email = user.email
+        attendee.save()
+        return redirect('event_list')
+    else:
+        return redirect('event_list')

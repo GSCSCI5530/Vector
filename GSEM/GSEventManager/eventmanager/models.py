@@ -25,9 +25,12 @@ class Event(models.Model):
 
 
 class Attendee(models.Model):
-    event_name = models.ForeignKey('Event', on_delete=models.CASCADE)
-    user_name = models.ForeignKey('auth.User', on_delete=models.CASCADE)
+    # event = models.ForeignKey('Event', on_delete=models.CASCADE)
+    event_name = models.CharField(max_length=200)
+    # user_name = models.ForeignKey('auth.User', on_delete=models.CASCADE)
     user_email = models.CharField(max_length=200)
+    user_name = models.CharField(max_length=200)
 
     def attend(self):
         self.save()
+

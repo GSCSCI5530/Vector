@@ -9,6 +9,6 @@ urlpatterns = [
     path('eventmanager/new', views.event_new, name='event_new'),
     path('eventmanager/<int:pk>/edit', views.event_edit, name='event_edit'),
     path('eventmanager/search', views.event_search, name='event_search'),
-    # path('eventmanager/login/', views.login, name='login'),
+    path('eventmanager/<int:pk>/attend_event/', views.attend_event, name='attend_event'),
 ]
 
