@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -36,3 +37,14 @@ class Comment(models.Model):
 		
 	def __str__(self):
 		return self.content
+
+class Attendee(models.Model):
+    # event = models.ForeignKey('Event', on_delete=models.CASCADE)
+    event_name = models.CharField(max_length=200)
+    # user_name = models.ForeignKey('auth.User', on_delete=models.CASCADE)
+    user_email = models.CharField(max_length=200)
+    user_name = models.CharField(max_length=200)
+
+    def attend(self):
+        self.save()
+

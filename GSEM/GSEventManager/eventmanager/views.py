@@ -1,7 +1,7 @@
 from django.db.models import Q
 from django.shortcuts import render, get_object_or_404
 from django.utils import timezone
-from .models import Event, Comment
+from .models import Event, Comment, Attendee
 from .forms import EventForm, CommentForm
 from django.shortcuts import redirect
 
@@ -73,3 +73,16 @@ def add_comment(request, pk):
     return render(request, 'eventmanager/add_comment.html', {'form': form})
 	
 
+
+def attend_event(request, pk):
+    if request.method == "GET":
+        attendee = Attendee()
+        event = get_object_or_404(Event, pk=pk)
+        user = request.user
+        attendee.event_name = event.event_name
+        attendee.user_name = user.username
+        attendee.user_email = user.email
+        attendee.save()
+        return redirect('event_list')
+    else:
+        return redirect('event_list')

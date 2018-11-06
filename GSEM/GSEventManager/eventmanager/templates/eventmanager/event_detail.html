@@ -8,24 +8,49 @@
         </div>
         {% endif %}
         <a class="btn btn-primary" href="{% url 'event_edit' pk=event.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+        <a class="btn btn-primary" href="{% url 'attend_event' pk=event.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
         <h1>{{ event.event_name }}</h1>
 		
 		
     </div>
+
+
 <p><h4>{{ event.text|linebreaksbr }}</h4></p>
+<!--<div id="disqus_thread"></div>-->
+<!--<script>-->
+
+<!--/**-->
+<!--*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.-->
+<!--*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/-->
+<!--/*-->
+<!--var disqus_config = function () {-->
+<!--this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable-->
+<!--this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable-->
+<!--};-->
+<!--*/-->
+<!--(function() { // DON'T EDIT BELOW THIS LINE-->
+<!--var d = document, s = d.createElement('script');-->
+<!--s.src = 'https://gsevents.disqus.com/embed.js';-->
+<!--s.setAttribute('data-timestamp', +new Date());-->
+<!--(d.head || d.body).appendChild(s);-->
+<!--})();-->
+<!--</script>-->
+<!--<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>-->
+
+
 
 	<a href="https://www.facebook.com/sharer/sharer.php?u={{request.build_absolute_uri}}">
-	Share on Facebook
-	</a> </br>
-	<p>&nbsp;</p>
+	 Share on Facebook |
+	</a>
+
 	<a href="https://twitter.com/home?status=You're%20Invited!%20{{request.build_absolute_uri}}">
-	Share on Twitter
-	</a> </br>
-	<p>&nbsp;</p>
+	 Share on Twitter |
+	</a>
+
 	<a href='https://plus.google.com/share?url={{request.build_absolute_uri}}'>
-	Share on Google+
-	</a> </br>
-	<p>&nbsp;</p>
+	 Share on Google+ 
+	</a>
+
 	
 	<form method="POST" action= {% url 'publicationmanager:request_email' %}> 
 	{% csrf_token %}
@@ -46,6 +71,4 @@
 		<p>No comments here yet :(</p>
 	{% endfor %}
 {% endblock %}
-
-
 

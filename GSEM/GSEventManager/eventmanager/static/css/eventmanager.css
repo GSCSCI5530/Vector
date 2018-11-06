@@ -39,8 +39,8 @@ h1, h2, h3, h4 {
 }
 
 .event {
-    margin-bottom: 30px;
-    background: #5897fb;
+    margin-bottom: 10px;
+
 }
 
 .event h1 a, .event h1 a:visited {
