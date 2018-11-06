@@ -20,4 +20,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('eventmanager.urls')),
     path('', include('accounts.urls')),
+	path('', include('publicationmanager.urls'))
 ]

@@ -1,8 +1,8 @@
 from django.db.models import Q
 from django.shortcuts import render, get_object_or_404
 from django.utils import timezone
-from .models import Event
-from .forms import EventForm
+from .models import Event, Comment
+from .forms import EventForm, CommentForm
 from django.shortcuts import redirect
 
 
@@ -57,3 +57,19 @@ def event_search(request):
         return render(request, 'eventmanager/event_search.html', {'events': events, 'query': q})
     else:
         return redirect('event_list')
+		
+def add_comment(request, pk):
+    event = get_object_or_404(Event, pk=pk)
+    if request.method == "POST":
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.event = event
+            comment.user = request.user
+            comment.save()
+            return redirect('event_detail', pk=event.pk)
+    else:
+        form = CommentForm()
+    return render(request, 'eventmanager/add_comment.html', {'form': form})
+	
+
