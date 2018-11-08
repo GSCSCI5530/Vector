@@ -16,7 +16,8 @@ def event_list(request):
 
 def event_detail(request, pk):
     event = get_object_or_404(Event, pk=pk)
-    attendees = Attendee.objects.order_by('user_name')
+    user = request.user.username
+    attendees = Attendee.objects.filter(user_name=user)
     attending = False
     for attendee in attendees:
         if attendee.event_name == event.event_name:

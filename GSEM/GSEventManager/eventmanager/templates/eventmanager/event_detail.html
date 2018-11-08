@@ -16,7 +16,7 @@
         	{% if attending %}
 				<h3>You are attending this event</h3>
 			{% else %}
-			<a class="btn btn-primary" href="{% url 'attend_event' pk=event.pk %}" ><span label="Attend" class="glyphicon glyphicon-road"></span></a>
+			<a class="btn btn-primary" href="{% url 'attend_event' pk=event.pk %}" ><span label="Attend" class="glyphicon glyphicon-road"> RSVP</span></a>
 			{% endif %}
         {% endif %}
 
