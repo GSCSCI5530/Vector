@@ -16,7 +16,10 @@
 
 
             {% if user.is_authenticated %}
-            <a href="/logout/" class="top-menu">  Hello {{ user.username }}, Logout <span class="glyphicon glyphicon-log-out"></span></a>
+             <div class="top-menu"> Hello {{ user.username }}, &nbsp;
+             <a href="/logout/" class="top-menu">Logout &nbsp;<span class="glyphicon glyphicon-log-out"></span></a>
+             </div>
+
             {% if user.is_staff %}
             <a href="{% url 'event_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
             {% endif %}
