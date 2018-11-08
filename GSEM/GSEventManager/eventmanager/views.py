@@ -16,7 +16,14 @@ def event_list(request):
 
 def event_detail(request, pk):
     event = get_object_or_404(Event, pk=pk)
-    return render(request, 'eventmanager/event_detail.html', {'event': event})
+    attendees = Attendee.objects.order_by('user_name')
+    attending = False
+    for attendee in attendees:
+        if attendee.event_name == event.event_name:
+            attending = True
+        else:
+            attending = False
+    return render(request, 'eventmanager/event_detail.html', {'event': event, 'attending': attending})
 
 
 def event_new(request):
@@ -57,7 +64,8 @@ def event_search(request):
         return render(request, 'eventmanager/event_search.html', {'events': events, 'query': q})
     else:
         return redirect('event_list')
-		
+
+
 def add_comment(request, pk):
     event = get_object_or_404(Event, pk=pk)
     if request.method == "POST":
@@ -71,7 +79,6 @@ def add_comment(request, pk):
     else:
         form = CommentForm()
     return render(request, 'eventmanager/add_comment.html', {'form': form})
-	
 
 
 def attend_event(request, pk):

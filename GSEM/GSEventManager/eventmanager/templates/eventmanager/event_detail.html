@@ -7,9 +7,20 @@
             {{ event.published_date }}
         </div>
         {% endif %}
-        <a class="btn btn-primary" href="{% url 'event_edit' pk=event.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
-        <a class="btn btn-primary" href="{% url 'attend_event' pk=event.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
-        <h1>{{ event.event_name }}</h1>
+
+		{% if user.is_authenticated and user.is_staff %}
+			<a class="btn btn-primary" href="{% url 'event_edit' pk=event.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+		{% endif %}
+
+		{% if user.is_authenticated %}
+        	{% if attending %}
+				<h3>You are attending this event</h3>
+			{% else %}
+			<a class="btn btn-primary" href="{% url 'attend_event' pk=event.pk %}" ><span label="Attend" class="glyphicon glyphicon-road"></span></a>
+			{% endif %}
+        {% endif %}
+
+		<h1>{{ event.event_name }}</h1>
 		
 		
     </div>
@@ -39,22 +50,16 @@
 
 
 
-	<a href="https://www.facebook.com/sharer/sharer.php?u={{request.build_absolute_uri}}">
-	 Share on Facebook |
-	</a>
+	<a href="https://www.facebook.com/sharer/sharer.php?u={{request.build_absolute_uri}}"> Share on Facebook |</a>
 
-	<a href="https://twitter.com/home?status=You're%20Invited!%20{{request.build_absolute_uri}}">
-	 Share on Twitter |
-	</a>
+	<a href="https://twitter.com/home?status=You're%20Invited!%20{{request.build_absolute_uri}}"> Share on Twitter |</a>
 
-	<a href='https://plus.google.com/share?url={{request.build_absolute_uri}}'>
-	 Share on Google+ 
-	</a>
+	<a href='https://plus.google.com/share?url={{request.build_absolute_uri}}'> Share on Google+ </a>
 
 	
-	<form method="POST" action= {% url 'publicationmanager:request_email' %}> 
+	<form method="POST" action="{% url 'publicationmanager:request_email' %}">
 	{% csrf_token %}
-	<input type="submit" name="Submit"/ value="Share via. Email">
+	<input type="submit" name="Submit" value="Share via. Email">
 	</form>
 	
 	<br>
