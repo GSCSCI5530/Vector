@@ -16,6 +16,7 @@ def event_list(request):
 
 def event_detail(request, pk):
     event = get_object_or_404(Event, pk=pk)
+    form = CommentForm()
     user = request.user.username
     attendees = Attendee.objects.filter(user_name=user)
     attending = False
@@ -24,7 +25,7 @@ def event_detail(request, pk):
             attending = True
         else:
             attending = False
-    return render(request, 'eventmanager/event_detail.html', {'event': event, 'attending': attending})
+    return render(request, 'eventmanager/event_detail.html', {'event': event, 'attending': attending, 'form': form})
 
 
 def event_new(request):
