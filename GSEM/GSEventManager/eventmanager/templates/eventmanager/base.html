@@ -5,7 +5,7 @@
     <title>Georgia Southern Events</title>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-    <link href="//fonts.googleapis.com/css?family=Alfa+Slab+One&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Alfa+Slab+One&subset=latin,latin-ext" rel="stylesheet" type="text/css" >
 
     <link rel="stylesheet" href="{% static 'css/eventmanager.css' %}">
 
@@ -16,12 +16,12 @@
 
 
             {% if user.is_authenticated %}
-             <div class="top-menu"> Hello {{ user.username }}, &nbsp;
-             <a href="/logout/" class="top-menu">Logout &nbsp;<span class="glyphicon glyphicon-log-out"></span></a>
+             <div class="top-menu"  style="font-size:22px"> Hello {{ user.username }}, &nbsp;
+             <a  style="font-size:22px" href="/logout/" class="top-menu">Logout &nbsp;<span class="glyphicon glyphicon-log-out" ></span></a>
              </div>
 
             {% if user.is_staff %}
-            <a href="{% url 'event_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+            <a href="{% url 'event_new' %}" class="top-menu" title="Add new Event"><span class="glyphicon glyphicon-plus"></span></a>
             {% endif %}
             <!--<a href="/logout/" class="top-menu"> Logout <span class="glyphicon glyphicon-log-out"></span></a>-->
             {% else %}
@@ -47,9 +47,9 @@
 
                 </form>-->
 
-            <h1><a href="/">Georgia Southern Events</a></h1>
+            <h1><img src="/media/thumb-eagle.PNG" style="width:70px;height:70px;"><a href="/">Georgia Southern Events</a></h1>
 
-            <form class="select2-search__field" action="{% url 'event_search' %}" method="get">
+            <form align="right" class="select2-search__field" action="{% url 'event_search' %}" method="get">
                 <input class="form-row" type="search" name="q" placeholder="Search" aria-label="Search">
                 <button type="submit" value="Search"> Search </button>
             </form>
@@ -59,6 +59,7 @@
 
 <div class="content">
     <div class="event">
+
         <div class="col-md-8">
             {% block content %}
             {% endblock %}

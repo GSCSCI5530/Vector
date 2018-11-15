@@ -117,6 +117,9 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = 'media'
+
 # pls delete if I forget to delete the next 4 lines <3
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
