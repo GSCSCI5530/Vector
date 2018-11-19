@@ -9,6 +9,7 @@ from django.contrib.auth.models import User
 class Event(models.Model):
     author = models.ForeignKey('auth.User', on_delete=models.CASCADE)
     event_name = models.CharField(max_length=200)
+    image = models.ImageField(blank=True, null=True)
     text = models.TextField()
     created_date = models.DateTimeField(
         default=timezone.now)
@@ -16,6 +17,7 @@ class Event(models.Model):
         blank=True, null=True)
     event_date = models.DateTimeField(default=timezone.now)
     event_place = models.CharField(max_length=200)
+    
 
     def post(self):
         self.published_date = timezone.now()
@@ -49,3 +51,4 @@ class Attendee(models.Model):
 
     def attend(self):
         self.save()
+

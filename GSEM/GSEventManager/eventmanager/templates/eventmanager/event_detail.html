@@ -8,6 +8,12 @@
         </div>
         {% endif %}
 
+		<script>
+		function goBack() {
+  		  window.history.back();
+		}
+		</script>
+
 		{% if user.is_authenticated and user.is_staff %}
 			<a class="btn btn-primary" href="{% url 'event_edit' pk=event.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
 		{% endif %}
@@ -19,14 +25,18 @@
 			<a class="btn btn-primary" href="{% url 'attend_event' pk=event.pk %}" ><span label="Attend" class="glyphicon glyphicon-road"> RSVP</span></a>
 			{% endif %}
         {% endif %}
+		<p align="right">
+			<button onclick="goBack()">Go Back</button></p>
 
 		<h1>{{ event.event_name }}</h1>
-		
-		
+			{% if event.image != None %}
+			<img src="{{ event.image.url }}">
+				{% endif %}
     </div>
 
-
+   
 <p><h4>{{ event.text|linebreaksbr }}</h4></p>
+
 <!--<div id="disqus_thread"></div>-->
 <!--<script>-->
 

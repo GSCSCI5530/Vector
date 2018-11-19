@@ -2,12 +2,16 @@
 
 {% block content %}
             {% for event in events %}
-                <div class="event">
+
+                <div  class="event">
                     <div class="date">
-                        <p>published: {{ event.created_date }}</p>
                     </div>
-                    <h1><a href="{% url 'event_detail' pk=event.pk %}">{{ event.event_name }}</a></h1>
+
+                    <h1><a href="{% url 'event_detail' pk=event.pk %}" title="See more!">{{ event.event_name }}</a></h1>
                     <!--<p>{{ event.text|linebreaksbr }}</p>-->
+                    <p>Event Date: {{ event.event_date }}!</p>
+
                 </div>
+
             {% endfor %}
 {% endblock %}
