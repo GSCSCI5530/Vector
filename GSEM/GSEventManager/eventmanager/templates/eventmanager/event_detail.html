@@ -4,7 +4,7 @@
     <div class="event">
         {% if event.published_date %}
         <div class="date">
-            {{ event.published_date }}
+            Published on: {{ event.published_date }}
         </div>
         {% endif %}
 
@@ -25,8 +25,8 @@
 			<a class="btn btn-primary" href="{% url 'attend_event' pk=event.pk %}" ><span label="Attend" class="glyphicon glyphicon-road"> RSVP</span></a>
 			{% endif %}
         {% endif %}
-		<p align="right">
-			<button onclick="goBack()">Go Back</button></p>
+		<p align="right" class="content">
+			<button class="btn btn-primary" onclick="goBack()">Go Back</button></p>
 
 		<h1>{{ event.event_name }}</h1>
 			{% if event.image != None %}
@@ -59,7 +59,7 @@
 <!--<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>-->
 
 
-<h2> Location</h2>
+<h2> Location:</h2>
 <h3>{{ event.event_place }}</h3>
 	<a href="https://www.facebook.com/sharer/sharer.php?u={{request.build_absolute_uri}}"> Share on Facebook |</a>
 
@@ -70,13 +70,13 @@
 	
 	<form method="POST" action="{% url 'publicationmanager:request_email' %}">
 	{% csrf_token %}
-	<input type="submit" name="Submit" value="Share via. Email">
+	<input class="btn btn-primary" type="submit" name="Submit" value="Share via. Email">
 	</form>
 	
-	<br>
-	<hr>
-	<a class="btn btn-default" href="{% url 'add_comment' pk=event.pk %}">Add comment</a>
-    <hr>
+
+
+	<a class="btn btn-primary" href="{% url 'add_comment' pk=event.pk %}">Add comment</a>
+
 	{% for comment in event.comments.all %}
 		<div class="comment">
 			<div class="date">{{ comment.timestamp }}</div>
@@ -84,7 +84,7 @@
 			<p>{{ comment.content|linebreaks }}</p>
 		</div>
 	{% empty %}
-		<p>No comments here yet :(</p>
+		<p>No comments here yet. </p>
 	{% endfor %}
 
 

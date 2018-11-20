@@ -9,6 +9,8 @@
 
     <link rel="stylesheet" href="{% static 'css/eventmanager.css' %}">
 
+
+
 </head>
 
 <body>
@@ -29,25 +31,10 @@
             <a href="/signup/" class="top-menu"> Sign Up <span class="glyphicon glyphicon-pencil"></span></a>
             {% endif %}
 
-
-                <!--<form class="logout-link" action="{% url 'accounts:logout' %}" method="post">
-                    {% csrf_token %}
-                    <a href="//" class="top-menu" type="submit"> Lopoop <span class="glyphicon glyphicon-pencil"></span></a>
-                    <button type="submit"> Logout </button>
-                </form>
-
-                <form class="login-link" action="{% url 'accounts:login' %}" method="post">
-                    {% csrf_token %}
-                    <button type="submit"> Login </button>
-                </form>
-
-                <form class="signup-link" action="{% url 'accounts:signup' %}" method="post">
-                    {% csrf_token %}
-                    <button type="submit"> Sign-up </button>
-
-                </form>-->
-
             <h1><img src="/media/thumb-eagle.PNG" style="width:70px;height:70px;"><a href="/">Georgia Southern Events</a></h1>
+
+
+
 
             <form align="right" class="select2-search__field" action="{% url 'event_search' %}" method="get">
                 <input class="form-row" type="search" name="q" placeholder="Search" aria-label="Search">
@@ -60,10 +47,10 @@
 <div class="content">
     <div class="event">
 
-        <div class="col-md-8">
             {% block content %}
             {% endblock %}
-        </div>
+
+
     </div>
 </div>
 

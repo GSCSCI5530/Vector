@@ -1,20 +1,27 @@
 {% extends 'eventmanager/base.html' %}
 
 {% block content %}
-            {% for event in events %}
 
-                <div  class="event">
-                    <div class="date">
-                    </div>
+<div align="right" ><a  class="btn btn-primary" onclick="myFunction()" ><span  class="glyphicon glyphicon-th-list"></span></a></div>
 
-                    <h1><a href="{% url 'event_detail' pk=event.pk %}" title="See more!">{{ event.event_name }}</a></h1>
-                    <!--<p>{{ event.text|linebreaksbr }}</p>-->
-                    <p>Event Date: {{ event.event_date }}!</p>
+<script>
+function myFunction() {
+   var element = document.getElementById("myDIV");
+   element.classList.toggle("flex-container");
+}
+</script>
 
-                </div>
+<div id="myDIV" class="flex-container" >
+    {% for event in events %}
 
-            {% endfor %}
+    <div>
+        <h1><a href="{% url 'event_detail' pk=event.pk %}" title="See more!">{{ event.event_name }}</a></h1>
+        <!--<p>{{ event.text|linebreaksbr }}</p>-->
+        <p>{{ event.event_date }}</p>
+    </div>
+    {% endfor %}
 
+</div>
 
 <!--<iframe src="https://calendar.google.com/calendar/embed?showTitle=0&amp;showDate=0&amp;showPrint=0&amp;showTabs=0&amp;showCalendars=0&amp;showTz=0&amp;height=225&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;ctz=America%2FNew_York" style="border-width:0" width="300" height="225" frameborder="0" scrolling="no"></iframe>-->
 {% endblock %}
