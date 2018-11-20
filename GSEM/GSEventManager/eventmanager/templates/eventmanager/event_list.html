@@ -1,15 +1,14 @@
 {% extends 'eventmanager/base.html' %}
 
 {% block content %}
-
-<div align="right" class="content" ><a  class="btn btn-primary" onclick="myFunction()" ><span  class="glyphicon glyphicon-th-list"></span></a></div>
-
 <script>
 function myFunction() {
    var element = document.getElementById("myDIV");
    element.classList.toggle("flex-container");
 }
 </script>
+
+<div class="content" ><a  class="btn btn-primary" onclick="myFunction()" ><span  class="glyphicon glyphicon-th-list"></span></a></div>
 
 <div id="myDIV" class="flex-container" >
     {% for event in events %}
@@ -18,6 +17,7 @@ function myFunction() {
         <h1><a href="{% url 'event_detail' pk=event.pk %}" title="See more!">{{ event.event_name }}</a></h1>
         <!--<p>{{ event.text|linebreaksbr }}</p>-->
         <p>{{ event.event_date }}</p>
+
     </div>
     {% endfor %}
 
