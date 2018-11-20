@@ -1,14 +1,14 @@
 {% extends 'eventmanager/base.html' %}
 
 {% block content %}
-<script>
-function myFunction() {
-   var element = document.getElementById("myDIV");
-   element.classList.toggle("flex-container");
-}
-</script>
+<!--<script>-->
+<!--function myFunction() {-->
+   <!--var element = document.getElementById("myDIV");-->
+   <!--element.classList.toggle("flex-container");-->
+<!--}-->
+<!--</script>-->
 
-<div align="right" class="content" ><a  class="btn btn-primary" onclick="myFunction()" ><span  class="glyphicon glyphicon-th-list"></span></a></div>
+<!--<div align="right" class="content" ><a  class="btn btn-primary" onclick="myFunction()" ><span  class="glyphicon glyphicon-th-list"></span></a></div>-->
 
 <div id="myDIV" class="flex-container" >
     {% for event in events %}
