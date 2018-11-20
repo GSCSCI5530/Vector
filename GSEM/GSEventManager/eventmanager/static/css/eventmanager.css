@@ -54,7 +54,7 @@ h1, h2, h3, h4 {
   /*background-color: DodgerBlue;*/
 }
 
-.flex-container > div {
+.flex-container  div {
   background-color: #ebebff;
   width: 300px;
   margin: 5px;
