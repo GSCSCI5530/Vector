@@ -1,16 +1,16 @@
 {% extends 'eventmanager/base.html' %}
-<div id="myDIV" class="flex-container" >
+
 {% block content %}
-<!--<script>-->
-<!--function myFunction() {-->
-   <!--var element = document.getElementById("myDIV");-->
-   <!--element.classList.toggle("flex-container");-->
-<!--}-->
-<!--</script>-->
+<script>
+function myFunction() {
+   var element = document.getElementById("myDIV");
+   element.classList.toggle("flex-container");
+}
+</script>
 
-<!--<div align="right" class="content" ><a  class="btn btn-primary" onclick="myFunction()" ><span  class="glyphicon glyphicon-th-list"></span></a></div>-->
+<div align="right" class="content" ><a  class="btn btn-primary" onclick="myFunction()" ><span  class="glyphicon glyphicon-th-list"></span></a></div>
 
-
+<div id="myDIV" class="flex-container" >
     {% for event in events %}
 
     <div>
@@ -21,9 +21,8 @@
     </div>
     {% endfor %}
 
-
+</div>
 
 <!--<iframe src="https://calendar.google.com/calendar/embed?showTitle=0&amp;showDate=0&amp;showPrint=0&amp;showTabs=0&amp;showCalendars=0&amp;showTz=0&amp;height=225&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;ctz=America%2FNew_York" style="border-width:0" width="300" height="225" frameborder="0" scrolling="no"></iframe>-->
 {% endblock %}
 
-</div>
