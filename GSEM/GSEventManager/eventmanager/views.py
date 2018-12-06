@@ -5,14 +5,14 @@ from .models import Event, Comment, Attendee
 from .forms import EventForm, CommentForm
 from django.shortcuts import redirect
 
+import re
+import pickle
+import numpy as np
 
 # Create your views here.
-
-
 def event_list(request):
     events = Event.objects.order_by('-created_date')
     return render(request, 'eventmanager/event_list.html', {'events': events})
-
 
 def event_detail(request, pk):
     event = get_object_or_404(Event, pk=pk)
@@ -27,7 +27,6 @@ def event_detail(request, pk):
             attending = False
     return render(request, 'eventmanager/event_detail.html', {'event': event, 'attending': attending, 'form': form})
 
-
 def event_new(request):
     if request.method == "POST":
         form = EventForm(request.POST)
@@ -41,11 +40,10 @@ def event_new(request):
         form = EventForm()
     return render(request, 'eventmanager/event_edit.html', {'form': form})
 
-
 def event_edit(request, pk):
     event = get_object_or_404(Event, pk=pk)
     if request.method == "POST":
-        form = EventForm(request.POST, instance=event)
+        form = EventForm(request.POST,request.FILES or None, instance=event, )
         if form.is_valid():
             event = form.save(commit=False)
             event.author = request.user
@@ -55,7 +53,7 @@ def event_edit(request, pk):
     else:
         form = EventForm(instance=event)
     return render(request, 'eventmanager/event_edit.html', {'form': form})
-
+import re
 
 def event_search(request):
     if 'q' in request.GET and request.GET['q']:
@@ -67,7 +65,19 @@ def event_search(request):
     else:
         return redirect('event_list')
 
+def censor(words):
+    black_list = ["fuck", "shit", "piss", "damn", "ass", "cock", "balls", "nigger"] #Add words to censor here
+    text = words
+    patt = re.compile("|".join(black_list), re.I)
+    return patt.sub(lambda m: "*" * len(m.group(0)) , text)
 
+def check_spam(words): #1 = spam, 0 = not spam
+    stopset = pickle.load(open("C:/Users/Chanukya Badri/Desktop/Vector/GSEM/GSEventManager/eventmanager/spamStopset.pkl", 'rb'))
+    classifier = pickle.load(open("C:/Users/Chanukya Badri/Desktop/Vector/GSEM/GSEventManager/eventmanager/spamPickle.pkl", 'rb'))
+    vectorizer = pickle.load(open("C:/Users/Chanukya Badri/Desktop/Vector/GSEM/GSEventManager/eventmanager/spamVectorizer.pkl", 'rb'))
+    prediction = classifier.predict(vectorizer.transform(np.array([words])))
+    return prediction[0]
+	
 def add_comment(request, pk):
     event = get_object_or_404(Event, pk=pk)
     if request.method == "POST":
@@ -76,6 +86,10 @@ def add_comment(request, pk):
             comment = form.save(commit=False)
             comment.event = event
             comment.user = request.user
+            if check_spam(request.POST.get('content')) == 0:
+                comment.content = censor(request.POST.get('content'))
+            else:
+                return render(request, 'eventmanager/spam_redirect.html') #redirects here if it is spam
             comment.save()
             return redirect('event_detail', pk=event.pk)
     else:
@@ -95,3 +109,4 @@ def attend_event(request, pk):
         return redirect('event_list')
     else:
         return redirect('event_list')
+		

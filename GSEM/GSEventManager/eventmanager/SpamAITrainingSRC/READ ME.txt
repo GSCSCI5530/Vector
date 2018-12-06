@@ -1,0 +1,6 @@
+This contains the source code used to create and train the classifier, 
+this is for reference and is not needed. It contains the dataset
+the AI was trained on as well. Again, if you try to run this and
+don't know what you're doing, odd's are it won't work. 
+
+P.S. Pickle serialization is pretty lit.
