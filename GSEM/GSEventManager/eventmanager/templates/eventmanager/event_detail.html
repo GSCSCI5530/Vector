@@ -82,8 +82,10 @@
     <input class="btn btn-primary" type="submit" name="Submit" value="Share via. Email">
 </form>
 
-
+{% if user.is_authenticated %}
 <a class="btn btn-primary" href="{% url 'add_comment' pk=event.pk %}">Add comment</a>
+{% endif %}
+
 
 {% for comment in event.comments.all %}
 <div class="comment">
