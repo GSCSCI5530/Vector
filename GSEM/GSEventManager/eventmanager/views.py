@@ -72,9 +72,9 @@ def censor(words):
     return patt.sub(lambda m: "*" * len(m.group(0)) , text)
 
 def check_spam(words): #1 = spam, 0 = not spam
-    stopset = pickle.load(open("C:/Users/Chanukya Badri/Desktop/Vector/GSEM/GSEventManager/eventmanager/spamStopset.pkl", 'rb'))
-    classifier = pickle.load(open("C:/Users/Chanukya Badri/Desktop/Vector/GSEM/GSEventManager/eventmanager/spamPickle.pkl", 'rb'))
-    vectorizer = pickle.load(open("C:/Users/Chanukya Badri/Desktop/Vector/GSEM/GSEventManager/eventmanager/spamVectorizer.pkl", 'rb'))
+    stopset = pickle.load(open("/home/gsem/gsem.pythonanywhere.com/GSEM/GSEventManager/eventmanager/spamStopset.pkl", 'rb'))
+    classifier = pickle.load(open("/home/gsem/gsem.pythonanywhere.com/GSEM/GSEventManager/eventmanager/spamPickle.pkl", 'rb'))
+    vectorizer = pickle.load(open("/home/gsem/gsem.pythonanywhere.com/GSEM/GSEventManager/eventmanager/spamVectorizer.pkl", 'rb'))
     prediction = classifier.predict(vectorizer.transform(np.array([words])))
     return prediction[0]
 	
