@@ -12,9 +12,9 @@
 </p>
 
 <div class="event">
-    {% if event.published_date %}
+    {% if event.event_date %}
     <div class="date">
-        Published on: {{ event.published_date }}
+        Event Date: {{ event.event_date }}
     </div>
     {% endif %}
 
@@ -24,8 +24,10 @@
     {% endif %}
 
     {% if user.is_authenticated %}
+	
     {% if attending %}
     <h3>You are attending this event</h3>
+
     {% else %}
     <a class="btn btn-primary" href="{% url 'attend_event' pk=event.pk %}"><span label="Attend"
                                                                                  class="glyphicon glyphicon-road"> RSVP</span></a>
@@ -34,9 +36,11 @@
 
 
     <h1>{{ event.event_name }}</h1>
-    {% if event.image != None %}
+    {% if event.image %}
     <img src="{{ event.image.url }}">
-    {% endif %}
+    {% else %}
+	<br></br>
+	{% endif %}
 </div>
 
 
